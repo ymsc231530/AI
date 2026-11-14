@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彰化社區大學｜身心共融、原始點自癒學（18週課程簡章）</title>
+    <!-- 引入 Google Fonts: Noto Sans TC 與 Noto Serif TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe4',
+                            200: '#c7d8c9',
+                            600: '#4a7052',
+                            700: '#3b5942',
+                            800: '#314836',
+                            900: '#283b2d',
+                        },
+                        warm: {
+                            50: '#fbf9f5',
+                            100: '#f5efe6',
+                            200: '#e8dcc8',
+                            500: '#b8864b',
+                            600: '#9c6d36',
+                            700: '#7d5528',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 基礎平滑滾動與無障礙字體設定 */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* 預設適中字體，支援 JS 切換為 18px 大字體模式 */
+        }
+        html.large-font {
+            font-size: 18.5px;
+        }
+        body {
+            background-color: #fbf9f5;
+            color: #2c2925;
+            line-height: 1.75;
+        }
+        /* 東方溫潤紋理背景 */
+        .hero-pattern {
+            background-color: #314836;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                              radial-gradient(rgba(255, 255, 255, 0.05) 1px, #314836 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+        /* 友善列印樣式 (@media print) */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 11pt !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .hero-pattern {
+                background: #f4f7f4 !important;
+                color: #1f2937 !important;
+                border-bottom: 2px solid #314836;
+                padding: 1.5rem 0 !important;
+            }
+            .hero-pattern h1, .hero-pattern p {
+                color: #1f2937 !important;
+            }
+            .card-shadow {
+                box-shadow: none !important;
+                border: 1px solid #d1d5db !important;
+                break-inside: avoid;
+            }
+            table {
+                border-collapse: collapse !important;
+                width: 100% !important;
+            }
+            th, td {
+                border: 1px solid #9ca3af !important;
+                padding: 6px 8px !important;
+            }
+            tr {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sage-200 selection:text-sage-900">
+
+    <!-- 頂部無障礙與快速導覽列 (列印時隱藏) -->
+    <nav class="no-print sticky top-0 z-40 bg-warm-50/95 backdrop-blur-md border-b border-warm-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sage-700 text-white font-serif font-bold text-sm">彰</span>
+                <span class="font-bold text-sage-900 text-base sm:text-lg tracking-wide">彰化社區大學｜課程簡章</span>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- 樂齡友善：字級大小切換鈕 -->
+                <button id="fontToggleBtn" type="button" onclick="toggleFontSize()" 
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-warm-100 hover:bg-warm-200 text-warm-700 border border-warm-200 transition cursor-pointer"
+                    title="切換標準字體或樂齡大字體">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                    </svg>
+                    <span id="fontToggleLabel">放大字體</span>
+                </button>
+
+                <!-- 一鍵列印簡章按鈕 -->
+                <button type="button" onclick="window.print()" 
+                    class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium bg-sage-700 hover:bg-sage-800 text-white shadow-sm transition cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    <span>列印簡章</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 頂部橫幅 Hero Section -->
+    <header class="hero-pattern text-white py-12 sm:py-16 px-4 sm:px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-warm-100 text-sm sm:text-base font-medium mb-5">
+                <svg class="w-4 h-4 text-warm-200" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                <span>彰化社區大學 18週精選課程</span>
+            </div>
+
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-wider text-white mb-4 leading-tight">
+                身心共融、原始點自癒學
+            </h1>
+
+            <p class="text-sage-100 text-base sm:text-xl max-w-3xl mx-auto mb-8 font-normal leading-relaxed">
+                融合張釗漢醫師原始點醫學、社會情緒學習（SEL）與數位健康識能，<br class="hidden sm:inline">
+                打造跨越 20 至 80 歲的溫馨共學圈，開啟樂齡自主的健康新生活。
+            </p>
+
+            <!-- 核心亮點標籤 Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                <span class="px-3.5 py-1.5 rounded-xl bg-warm-500/90 text-white text-sm font-medium shadow-sm border border-warm-200/30">
+                    🌿 張釗漢原始點醫學
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-sage-600/90 text-white text-sm font-medium shadow-sm border border-white/20">
+                    💛 社會情緒學習 (SEL)
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-sage-600/90 text-white text-sm font-medium shadow-sm border border-white/20">
+                    📱 數位健康資訊素養
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-white/15 text-warm-50 text-sm font-medium border border-white/25">
+                    🤝 20–80歲跨世代共學
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區塊 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-14">
+
+        <!-- 1. 課程核心簡介區塊 (Grid 卡片式排版) -->
+        <section aria-labelledby="core-info-heading">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-1.5 h-7 rounded-full bg-sage-700"></span>
+                <h2 id="core-info-heading" class="font-serif text-2xl sm:text-3xl font-bold text-sage-900">課程核心企劃</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 課程理念 -->
+                <article class="card-shadow bg-white rounded-2xl p-6 border border-warm-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-2 text-sage-800 font-bold text-lg">
+                                <span class="w-8 h-8 rounded-lg bg-sage-100 text-sage-700 flex items-center justify-center">🌱</span>
+                                課程理念
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-sage-50 text-sage-700 border border-sage-200">核心精神</span>
+                        </div>
+                        <p class="text-stone-700 leading-relaxed">
+                            以原始點醫學為根基，結合身心察覺與數位健康識能。期望學員在互助共學中學會自我照顧，調和情緒壓力，提升數位健康資訊辨識力，開啟樂齡自主、身心安頓的健康新生活。
+                        </p>
+                    </div>
+                </article>
+
+                <!-- 課程目標 -->
+                <article class="card-shadow bg-white rounded-2xl p-6 border border-warm-200 shadow-sm md:col-span-2">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="inline-flex items-center gap-2 text-sage-800 font-bold text-lg">
+                            <span class="w-8 h-8 rounded-lg bg-warm-100 text-warm-700 flex items-center justify-center">🎯</span>
+                            課程目標
+                        </span>
+                        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-warm-50 text-warm-700 border border-warm-200">知行合一・社區共好</span>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed mb-4">
+                        源於關懷在地高齡與多元世代健康需求，本課程融入原始點理論與經絡調理技法；透過小組共學厚植同理與溝通品德；引導學員善用數位工具查詢正確保健知識；最終學會日常舒壓與保健技能，促進自我療癒並營造溫馨互助的社區健康網絡。
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-warm-100 text-xs sm:text-sm text-sage-800 font-medium">
+                        <div class="bg-sage-50/80 px-3 py-1.5 rounded-lg text-center">理論：原始點經絡</div>
+                        <div class="bg-sage-50/80 px-3 py-1.5 rounded-lg text-center">品德：同理與溝通</div>
+                        <div class="bg-sage-50/80 px-3 py-1.5 rounded-lg text-center">素養：數位健康查詢</div>
+                        <div class="bg-sage-50/80 px-3 py-1.5 rounded-lg text-center">連結：社區互助網絡</div>
+                    </div>
+                </article>
+
+                <!-- 條件限制 (招生對象與資格) -->
+                <article class="card-shadow bg-white rounded-2xl p-6 border border-warm-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="inline-flex items-center gap-2 text-sage-800 font-bold text-lg">
+                            <span class="w-8 h-8 rounded-lg bg-sage-100 text-sage-700 flex items-center justify-center">👥</span>
+                            條件限制與對象
+                        </span>
+                        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">零基礎友善</span>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed">
+                        年齡層涵蓋 <strong class="text-sage-800 font-bold">20 至 80 歲</strong>，對自然保健、身心調理或原始點醫學有興趣者皆可參加。無須醫療背景，唯需具備基本行動力與動手操作意願；若涉及數位工具查詢與社群互動，課堂將由助教個別指導，初學者亦能輕鬆上手。
+                    </p>
+                </article>
+
+                <!-- 授課方式 -->
+                <article class="card-shadow bg-white rounded-2xl p-6 border border-warm-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="inline-flex items-center gap-2 text-sage-800 font-bold text-lg">
+                            <span class="w-8 h-8 rounded-lg bg-warm-100 text-warm-700 flex items-center justify-center">👐</span>
+                            多元授課方式
+                        </span>
+                    </div>
+                    <p class="text-stone-600 text-sm mb-3">採互動實作與個別陪伴並行，讓不同年齡層皆能快樂吸收：</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-xl bg-sage-50 text-sage-800 border border-sage-200 text-sm font-medium">講師示範與實際操作</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-warm-50 text-warm-800 border border-warm-200 text-sm font-medium">團體互動及小組活動</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-sage-50 text-sage-800 border border-sage-200 text-sm font-medium">影片欣賞及圖像教學</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-warm-50 text-warm-800 border border-warm-200 text-sm font-medium">案例討論與心得分享</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-sage-50 text-sage-800 border border-sage-200 text-sm font-medium">個別指導與反覆練習</span>
+                    </div>
+                </article>
+
+                <!-- 發展計畫 -->
+                <article class="card-shadow bg-white rounded-2xl p-6 border border-warm-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="inline-flex items-center gap-2 text-sage-800 font-bold text-lg">
+                            <span class="w-8 h-8 rounded-lg bg-sage-100 text-sage-700 flex items-center justify-center">🌳</span>
+                            未來發展計畫
+                        </span>
+                        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-sage-50 text-sage-700 border border-sage-200">永續共學</span>
+                    </div>
+                    <p class="text-stone-700 leading-relaxed">
+                        未來將深化在地高齡健康照顧，結社成立志工互助網，並進階融入中草藥與數位健康大數據應用，推動跨世代共學與社區健康永續發展。
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 2. 精彩教學設計亮點 (第 3 週課程範例) -->
+        <section aria-labelledby="lesson-plan-heading" class="card-shadow bg-gradient-to-br from-sage-50 via-white to-warm-50 rounded-3xl p-6 sm:p-8 border border-sage-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-sage-200/80">
+                <div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-sage-700 text-white text-xs font-bold tracking-wider mb-2">
+                        精彩教學設計範例・第 3 週
+                    </span>
+                    <h2 id="lesson-plan-heading" class="font-serif text-2xl sm:text-3xl font-bold text-sage-900">
+                        主題：頭部原始點揉按與情緒覺察
+                    </h2>
+                </div>
+                <div class="text-sm text-sage-800 bg-white px-4 py-2 rounded-xl border border-sage-200 font-medium self-start sm:self-center">
+                    ⏱️ 單堂總計 100 分鐘沉浸式體驗
+                </div>
+            </div>
+
+            <!-- 4 階段步驟卡片 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- 步驟 1 -->
+                <div class="bg-white rounded-2xl p-5 border border-warm-200 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="w-8 h-8 rounded-full bg-warm-500 text-white font-bold flex items-center justify-center text-sm">1</span>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-warm-100 text-warm-800">15 分鐘</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-sage-900 mb-2">暖身引導</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        透過圖像教學帶領學員覺察壓力下的頭部緊繃感（結合社會情緒學習 SEL）。
+                    </p>
+                </div>
+
+                <!-- 步驟 2 -->
+                <div class="bg-white rounded-2xl p-5 border border-sage-200 shadow-sm relative ring-2 ring-sage-600/20">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="w-8 h-8 rounded-full bg-sage-700 text-white font-bold flex items-center justify-center text-sm">2</span>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-sage-100 text-sage-800">45 分鐘</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-sage-900 mb-2">講師示範與實作</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        示範頭部原始點正確手法與溫敷要領，學員兩人一組互相揉按，體驗安全互動。
+                    </p>
+                </div>
+
+                <!-- 步驟 3 -->
+                <div class="bg-white rounded-2xl p-5 border border-warm-200 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="w-8 h-8 rounded-full bg-sky-600 text-white font-bold flex items-center justify-center text-sm">3</span>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800">20 分鐘</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-sage-900 mb-2">數位小撇步</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        引導學員透過手機查詢正確穴位圖解與衛教資訊，助教在旁親切協助。
+                    </p>
+                </div>
+
+                <!-- 步驟 4 -->
+                <div class="bg-white rounded-2xl p-5 border border-warm-200 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm">4</span>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800">20 分鐘</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-sage-900 mb-2">心得分享</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        小組交流彼此手感體驗與肩頸頭部放鬆後的舒暢感受，凝聚班級情誼。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 18週完整課程大綱 (互動篩選、搜尋與完整表格) -->
+        <section aria-labelledby="syllabus-heading">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="w-1.5 h-7 rounded-full bg-sage-700"></span>
+                        <h2 id="syllabus-heading" class="font-serif text-2xl sm:text-3xl font-bold text-sage-900">18 週完整課程大綱</h2>
+                    </div>
+                    <p class="text-stone-600 text-sm sm:text-base pl-4">循序漸進掌握全身原始點調理、情緒自我照顧與數位健康素養</p>
+                </div>
+
+                <!-- 關鍵字搜尋框 (列印時隱藏) -->
+                <div class="no-print relative w-full md:w-72">
+                    <input type="text" id="searchInput" oninput="filterSyllabus()"
+                        placeholder="搜尋週次、部位或關鍵字..."
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-warm-200 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sage-600 focus:border-transparent shadow-sm text-sm">
+                    <svg class="w-5 h-5 text-stone-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 分類篩選按鈕列 (列印時隱藏) -->
+            <div class="no-print flex flex-wrap items-center gap-2 mb-6" role="tablist" aria-label="課程分類篩選">
+                <button type="button" onclick="setCategory('all', this)" class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium bg-sage-700 text-white shadow-sm transition cursor-pointer">
+                    全部週次 (18週)
+                </button>
+                <button type="button" onclick="setCategory('practice', this)" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-700 border border-warm-200 hover:bg-sage-50 transition cursor-pointer">
+                    🌿 原始點實作與調理
+                </button>
+                <button type="button" onclick="setCategory('sel', this)" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-700 border border-warm-200 hover:bg-sage-50 transition cursor-pointer">
+                    💛 社會情緒與社區共融
+                </button>
+                <button type="button" onclick="setCategory('digital', this)" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-700 border border-warm-200 hover:bg-sage-50 transition cursor-pointer">
+                    📱 數位資訊素養
+                </button>
+                <button type="button" onclick="setCategory('review', this)" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-700 border border-warm-200 hover:bg-sage-50 transition cursor-pointer">
+                    🎉 總複習與成果展
+                </button>
+            </div>
+
+            <!-- 課程大綱表格容器 -->
+            <div class="card-shadow bg-white rounded-2xl border border-warm-200 shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-sage-800 text-white text-sm sm:text-base">
+                                <th class="py-3.5 px-4 sm:px-6 font-bold w-20 sm:w-24 text-center whitespace-nowrap">週次</th>
+                                <th class="py-3.5 px-4 sm:px-6 font-bold w-1/3 min-w-[200px]">主題</th>
+                                <th class="py-3.5 px-4 sm:px-6 font-bold">課程內容</th>
+                            </tr>
+                        </thead>
+                        <tbody id="syllabusBody" class="divide-y divide-warm-200 text-stone-700">
+                            <!-- 由 JavaScript 動態渲染 1~18 週完整內容，確保篩選與搜尋流暢 -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 無搜尋結果提示 -->
+                <div id="emptyState" class="hidden py-12 px-4 text-center text-stone-500">
+                    <p class="text-lg font-medium mb-2">找不到符合條件的課程週次</p>
+                    <button type="button" onclick="resetFilters()" class="px-4 py-2 rounded-xl bg-sage-100 text-sage-800 text-sm font-medium hover:bg-sage-200 transition cursor-pointer">
+                        顯示全部 18 週課程
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部行動呼籲與頁尾 Footer -->
+    <footer class="bg-sage-900 text-sage-100 mt-12 border-t border-sage-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-sage-800">
+                <div class="text-center md:text-left">
+                    <h2 class="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
+                        歡迎加入「身心共融、原始點自癒學」
+                    </h2>
+                    <p class="text-sage-200 text-sm sm:text-base">
+                        誠摯邀請 20 至 80 歲社區夥伴一同學習自我照顧、溫暖彼此，打造健康幸福的彰化生活圈！
+                    </p>
+                </div>
+                <div class="no-print flex flex-wrap items-center justify-center gap-3 shrink-0">
+                    <button type="button" onclick="window.print()" 
+                        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-warm-500 hover:bg-warm-600 text-white font-bold shadow-md transition cursor-pointer">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                        </svg>
+                        <span>一鍵列印 / 儲存 PDF 簡章</span>
+                    </button>
+                    <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                        class="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-sage-800 hover:bg-sage-700 text-sage-100 font-medium border border-sage-700 transition cursor-pointer">
+                        <span>回到頂部 ↑</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-sage-300">
+                <p>開課單位：彰化社區大學｜課程時數：18 週（每週一堂）</p>
+                <p>※ 本課程為日常健康促進與自我保健教育，不取代正規醫療診斷與治療。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 完整 18 週課程大綱資料（100% 保留原始文字並標註分類標籤）
+        const syllabusData = [
+            {
+                week: 1,
+                topic: "相見歡：認識身體的內在智慧",
+                content: "破冰相見歡，介紹原始點醫學核心理念與「身心共融」學習公約，引導跨世代學員建立溫暖支持的學習社群，分組選出小組長。",
+                categories: ["sel"],
+                badges: ["社會情緒 SEL"]
+            },
+            {
+                week: 2,
+                topic: "原始點總論與日常保健觀念",
+                content: "介紹張釗漢醫師創立原始點的緣起與「以人為本、以病為師」的精神，建立不走冤枉路的正確養生觀，並學習日常溫敷與生活起居調理。",
+                categories: ["practice"],
+                badges: ["原始點實作"]
+            },
+            {
+                week: 3,
+                topic: "頭部原始點揉按與情緒覺察",
+                content: "學習頭部原始點位置與按推技巧。結合社會情緒學習（SEL），引導學員覺察頭頸部緊繃與情緒壓力的關聯，學會自我放鬆與情緒釋放。",
+                categories: ["practice", "sel"],
+                badges: ["原始點實作", "社會情緒 SEL"],
+                highlight: "sample"
+            },
+            {
+                week: 4,
+                topic: "頸椎與背部原始點實作演練",
+                content: "深入講解頸椎及上胸背部原始點，透過講師示範、學員兩兩互助實作，學會緩解肩頸僵硬與胸悶，並建立同理與溫柔陪伴的溝通態度。",
+                categories: ["practice", "sel"],
+                badges: ["原始點實作", "社會情緒 SEL"]
+            },
+            {
+                week: 5,
+                topic: "數位健康識能：網路資訊真假辨別",
+                content: "結合資訊素養，指導學員如何在手機與網路上搜尋、過濾正確的健康保健資訊，避免遭受誇大廣告與錯誤偏方誤導，提升數位自保能力。",
+                categories: ["digital"],
+                badges: ["數位資訊素養"]
+            },
+            {
+                week: 6,
+                topic: "胸椎與腰部原始點保健技法",
+                content: "介紹中胸椎與腰部原始點，針對久坐引起的腰痠背痛進行實際演練，並探討身體痠痛背後的生活習慣反思與自我照顧責任。",
+                categories: ["practice", "sel"],
+                badges: ["原始點實作"]
+            },
+            {
+                week: 7,
+                topic: "臀部與薦椎原始點調理與應用",
+                content: "學習臀部及薦椎原始點的按推手法與溫敷要領，了解其對下肢循環與骨盆保健的重要性，並透過小組互助增進人際信任與互動。",
+                categories: ["practice", "sel"],
+                badges: ["原始點實作", "社會情緒 SEL"]
+            },
+            {
+                week: 8,
+                topic: "四肢原始點（上肢與下肢）基礎",
+                content: "介紹手肘、膝蓋、腳踝等四肢原始點的操作技巧，配合日常伸展與自我按摩，學習當身體出現局部不適時的自我應變與舒緩方法。",
+                categories: ["practice"],
+                badges: ["原始點實作"]
+            },
+            {
+                week: 9,
+                topic: "公民素養週",
+                content: "由彰化社區大學安排",
+                categories: ["all"],
+                badges: [],
+                specialType: "civic" // 特別凸顯第9週公民素養週
+            },
+            {
+                week: 10,
+                topic: "飲食調理與身心安頓的日常實踐",
+                content: "從原始點觀念延伸至日常飲食原則，探討清淡、溫熱飲食對體質的調整助益，並分享如何透過正念呼吸穩定心緒、減少焦慮。",
+                categories: ["practice", "sel"],
+                badges: ["社會情緒 SEL"]
+            },
+            {
+                week: 11,
+                topic: "慢性痠痛案例討論與心得分享",
+                content: "透過真實案例討論，引導學員分組剖析常見身體痠痛與生活習慣的因果關係，互相傾聽與分享調理心得，深化同理心與應對智慧。",
+                categories: ["practice", "sel"],
+                badges: ["社會情緒 SEL"]
+            },
+            {
+                week: 12,
+                topic: "數位工具應用：建立個人健康小檔案",
+                content: "利用手機記事本或簡單數位工具，教導學員記錄每日的身體反饋、運動狀況與溫敷心得，讓健康管理更具條理與持續性。",
+                categories: ["digital"],
+                badges: ["數位資訊素養"]
+            },
+            {
+                week: 13,
+                topic: "綜合複習：全身原始點連貫演練（上）",
+                content: "結合前段課程所學，由學員分組進行頭、頸、背、腰部原始點的完整流程演練，講師與助學旁視指導，糾正手法盲點。",
+                categories: ["practice", "review"],
+                badges: ["總複習", "原始點實作"]
+            },
+            {
+                week: 14,
+                topic: "綜合複習：全身原始點連貫演練（下）",
+                content: "延續上週，完成臀、四肢原始點與溫敷流程的總複習。強化團隊默契與互助合作，讓每位學員都能獨立完成基礎居家照護。",
+                categories: ["practice", "review"],
+                badges: ["總複習", "原始點實作"]
+            },
+            {
+                week: 15,
+                topic: "居家自癒力養成與危機應變共識",
+                content: "探討遇到急性不適時的正確處置優先順序，強調原始點為日常保健輔助而非取代醫療，培養理性的健康公民素養與自我負責態度。",
+                categories: ["digital", "sel"],
+                badges: ["數位資訊素養"]
+            },
+            {
+                week: 16,
+                topic: "社區互助與銀髮陪伴實務演練",
+                content: "探討如何將所學應用於關懷家中長輩或社區鄰里，設計簡易的日常互動與關懷劇本，在小組內進行模擬展現與互評。",
+                categories: ["sel"],
+                badges: ["社會情緒 SEL"]
+            },
+            {
+                week: 17,
+                topic: "成果展籌備與學習歷程總結",
+                content: "各組整理 18 週以來的學習筆記、實作心得與數位健康搜尋成果，共同討論並排練期末成果展的呈現方式與互動亮點。",
+                categories: ["review", "digital"],
+                badges: ["總複習"]
+            },
+            {
+                week: 18,
+                topic: "期末成果展暨結業感恩式",
+                content: "舉辦全班學習成果展與動態操作展示，邀請親友與社區民眾觀賞，頒發結業證書並進行溫馨感恩分享，凝聚終身學習與社區互助情誼。",
+                categories: ["review", "sel"],
+                badges: ["成果展"],
+                specialType: "finale" // 特別凸顯第18週期末成果展
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        // 渲染課程大綱表格
+        function renderSyllabus(data) {
+            const tbody = document.getElementById('syllabusBody');
+            const emptyState = document.getElementById('emptyState');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+
+                // 針對第 9 週公民素養週與第 18 週期末成果展設定柔和醒目色塊
+                if (item.specialType === 'civic') {
+                    tr.className = 'bg-amber-50/90 hover:bg-amber-100/70 transition';
+                } else if (item.specialType === 'finale') {
+                    tr.className = 'bg-sage-100/80 hover:bg-sage-100 transition';
+                } else {
+                    tr.className = 'hover:bg-warm-50/80 transition';
+                }
+
+                // 週次徽章樣式
+                let weekBadgeClass = 'bg-sage-100 text-sage-800';
+                if (item.specialType === 'civic') weekBadgeClass = 'bg-amber-200/80 text-amber-900';
+                if (item.specialType === 'finale') weekBadgeClass = 'bg-sage-700 text-white';
+
+                // 主題內的小標籤
+                const tagsHtml = item.badges.map(tag => {
+                    let tagStyle = 'bg-stone-100 text-stone-600';
+                    if (tag.includes('原始點')) tagStyle = 'bg-sage-50 text-sage-700 border border-sage-200';
+                    if (tag.includes('情緒')) tagStyle = 'bg-warm-100 text-warm-800 border border-warm-200';
+                    if (tag.includes('數位')) tagStyle = 'bg-sky-50 text-sky-700 border border-sky-200';
+                    if (tag.includes('成果展')) tagStyle = 'bg-sage-700 text-white';
+                    return `<span class="no-print inline-block text-xs font-medium px-2 py-0.5 rounded-md ${tagStyle} mt-1.5 mr-1.5">${tag}</span>`;
+                }).join('');
+
+                tr.innerHTML = `
+                    <td class="py-4 px-4 sm:px-6 text-center align-top">
+                        <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-bold ${weekBadgeClass}">
+                            第 ${item.week} 週
+                        </span>
+                    </td>
+                    <td class="py-4 px-4 sm:px-6 align-top">
+                        <div class="font-bold text-base sm:text-lg ${item.specialType === 'civic' ? 'text-amber-900' : 'text-sage-900'}">
+                            ${item.topic}
+                        </div>
+                        ${tagsHtml ? `<div class="mt-1">${tagsHtml}</div>` : ''}
+                    </td>
+                    <td class="py-4 px-4 sm:px-6 align-top leading-relaxed ${item.specialType === 'civic' ? 'font-medium text-amber-900' : 'text-stone-700'}">
+                        ${item.content}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 設定分類篩選
+        function setCategory(category, btnElement) {
+            currentCategory = category;
+
+            // 更新按鈕外觀
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-sage-700', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'text-stone-700', 'border', 'border-warm-200');
+            });
+            btnElement.classList.remove('bg-white', 'text-stone-700', 'border', 'border-warm-200');
+            btnElement.classList.add('bg-sage-700', 'text-white', 'shadow-sm');
+
+            filterSyllabus();
+        }
+
+        // 執行分類 + 關鍵字聯合過濾
+        function filterSyllabus() {
+            const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+
+            const filtered = syllabusData.filter(item => {
+                const matchCategory = currentCategory === 'all' || item.categories.includes(currentCategory);
+                const matchKeyword = !keyword ||
+                    item.topic.toLowerCase().includes(keyword) ||
+                    item.content.toLowerCase().includes(keyword) ||
+                    `第${item.week}週`.includes(keyword) ||
+                    `第 ${item.week} 週`.includes(keyword);
+                return matchCategory && matchKeyword;
+            });
+
+            renderSyllabus(filtered);
+        }
+
+        // 重設篩選
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            const defaultBtn = document.querySelector('.filter-btn');
+            setCategory('all', defaultBtn);
+        }
+
+        // 樂齡友善：切換大字體模式
+        function toggleFontSize() {
+            const htmlEl = document.documentElement;
+            const labelEl = document.getElementById('fontToggleLabel');
+            const isLarge = htmlEl.classList.toggle('large-font');
+            labelEl.textContent = isLarge ? '標準字體' : '放大字體';
+        }
+
+        // 頁面載入完成後初始化表格
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSyllabus(syllabusData);
+        });
+    </script>
+</body>
+</html>
